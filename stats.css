@@ -1,0 +1,224 @@
+/* Background pattern from Toptal Subtle Patterns */
+body
+{
+	cursor: default;
+	margin: 0;
+	font-family: 'Lato', sans-serif;
+	background-image: url("img/bg.jpg");
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+h2
+{
+	font-weight: 900;
+	margin: 10px 25px;
+	font-size: 40px;
+	color: black;
+	line-height: 80px;
+	text-align: center;
+}
+
+h3
+{
+	text-align: center;
+}
+
+.playerinfo h2
+{
+	color: #151519;
+}
+
+.playerinfo h3
+{
+	float: right;
+	font-size: 25px;
+	line-height: 80px;
+	color: #151519;
+	margin: 10px 60px;
+	font-weight: 900;
+	text-align: left;
+	letter-spacing: 4px;
+}
+
+a:-webkit-any-link
+{
+	color: #000;
+	text-decoration: none;
+}
+
+a
+{
+	color: #000;
+	text-decoration: none;
+}
+
+figure
+{
+	float: left;
+	position: relative;
+}
+
+figure img
+{
+	border-radius: 50%;
+}
+
+img
+{
+	border-radius: 5px;
+}
+
+.logo
+{
+	width: 100%;
+	text-align: center;
+	font-weight: 900;
+	padding: 18px 0;
+	background-color: #151519;
+	font-size: 45px;
+	letter-spacing: 2px;
+}
+
+.logo img
+{
+	margin: 0 10px;
+	height: 85px
+}
+
+.blue
+{
+	color: #1A2275;
+}
+
+.red
+{
+	color: #BD0003;
+}
+
+.container
+{
+	background-image: url('img/country-quilt.png');
+	width: 705px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.playerinfo
+{
+	background-color: rgba(0, 0, 0, 0.1);
+	margin-left: auto;
+	margin-right: auto;
+	padding: 30px;
+}
+
+.mastery
+{
+	padding: 10px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 600px;
+}
+
+.place
+{
+	font-weight: 900;
+	color: #BD0003;
+	margin-bottom: 10px;
+	font-size: 24px;
+	font-family: Verdana;
+}
+
+.place2
+{
+	margin-top: 100px;
+}
+
+.place3
+{
+	margin-top: 200px;
+}
+
+.lvl
+{
+	font-weight: 900;
+	color: #1A2275;
+	margin-top: 10px;
+	font-size: 20px;
+}
+
+.overlay
+{
+	position: absolute;
+	left: 0;
+	top: 39px;
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	background-color: #151519;
+	opacity: 0;
+	transition: opacity .25s ease-in-out;
+	text-align: center;
+	font-weight: 900;
+	font-size: 20px;
+}
+
+.overlay:hover
+{
+	opacity: 0.85;
+}
+
+.overlay .blue
+{
+	color: #3748f2;
+}
+
+.overlay .red
+{
+	color: #d6171a;
+}
+
+.oltext
+{
+	margin-top: 35px;
+}
+
+.floatleft
+{
+	float: left;
+}
+
+.matches
+{
+	background-color: rgba(0, 0, 0, 0.1);
+	min-height: 100px;
+	padding: 1px 0;
+}
+
+.match
+{
+	padding: 10px;
+	margin: 20px 10px;
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.matchtext h2
+{
+	margin: 0;
+	text-align: center;
+	font-size: 28px;
+	line-height: 35px;
+}
+
+.footer
+{
+	width: 100%;
+	padding: 10px 0;
+	font-size: 15px;
+	text-align: center;
+	color: #fff;
+	line-height: 23px;
+	background-color: #040408;
+}
