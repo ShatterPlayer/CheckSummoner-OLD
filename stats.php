@@ -119,7 +119,11 @@
 		<!--------------------------->
 		
 		<header>
-			<div class="logo"><img src="img/quinnblue.png"><span class="blue">Check</span><span class="red">Summoner</span><img src="img/quinnred.png"></div>
+		
+			<div class="logo">
+				<a href="index.php"><img src="img/banner.png"></a>
+			</div>
+			
 		</header>
 		<main>
 			<div class="container">

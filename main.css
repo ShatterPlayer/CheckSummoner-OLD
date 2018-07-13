@@ -116,12 +116,11 @@ header
 	min-height: 30px;
 	font-size: 60px;
 	letter-spacing: 2px;
-	padding: 10px 0;
+	padding-top: 20px;
 }
 
 .logo img
 {
-	margin: 0 10px;
 	height: 85px
 }
 
