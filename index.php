@@ -50,10 +50,7 @@
 
 	<header>
 		<div class="logo">
-			<img src="img/quinnblue.png">
-			<span class="blue">Check</span>
-			<span class="red">Summoner</span>
-			<img src="img/quinnred.png">
+			<img src="img/banner.png">
 		</div>
 	</header>
 

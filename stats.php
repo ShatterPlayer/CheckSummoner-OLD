@@ -35,7 +35,7 @@
 	$nick = $_POST['nick'];
 	$region = $_POST['region'];
 	
-	$API_KEY="RGAPI-8b861147-9b55-4816-97d8-d7dc71ea21c1";
+	$API_KEY="RGAPI-733a9300-cee9-4dc0-b9fb-dcdd85d62c0a";
 	require_once "apiconnect.php";
 	$player = apiRequest('https://'.$region.".api.riotgames.com"."/lol/summoner/v3/summoners/by-name/{$nick}");
 	
