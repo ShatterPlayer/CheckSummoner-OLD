@@ -15,11 +15,12 @@
 		$_SESSION['error'] = "Podany nick jest nieprawidłowy!";
 		header("Location: index.php#error"); exit();
 	}
+	
+	$secret_keys = require_once "secrets.php";
 	/*
-		$secret="6LeJx18UAAAAAHbaL4lz74uyKL2R3kll69bfbgAp";
 		$responseKey = $_POST['g-recaptcha-response'];
 		$ip = $_SERVER['REMOTE_ADDR'];
-		$url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$responseKey&remoteip=$ip";
+		$url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret_keys[1]&response=$responseKey&remoteip=$ip";
 		$check = file_get_contents($url);
 		$answear = json_decode($check);
 		
@@ -35,7 +36,7 @@
 	$nick = $_POST['nick'];
 	$region = $_POST['region'];
 	
-	$API_KEY="RGAPI-733a9300-cee9-4dc0-b9fb-dcdd85d62c0a";
+	$API_KEY=$secret_keys[0];
 	require_once "apiconnect.php";
 	$player = apiRequest('https://'.$region.".api.riotgames.com"."/lol/summoner/v3/summoners/by-name/{$nick}");
 	
