@@ -184,7 +184,18 @@
 						echo '<h3>Nie mogę wyświetlić ostatnich meczy :(</h3>';
 						else
 						{
-							
+							foreach($matchesId->matches as $m)
+							{
+								echo '
+								<div class="match">
+								<img src="http://ddragon.leagueoflegends.com/cdn/'.$versions[0].'/img/champion/'.$champions[$m->champion].'.png" onerror="this.src=\'img/noimg.jpg\';">
+								<div class=matchtext">
+								<h2>'.$m->lane.'</h2>
+								</div>
+								<div style="clear: both;"></div>
+								</div>
+								';
+							}
 						}
 					?>
 					
