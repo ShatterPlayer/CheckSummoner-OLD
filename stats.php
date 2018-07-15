@@ -75,12 +75,19 @@
 		else return '?';
 	}
 	
-	function tstamp_to_date($t)
+	function tstamp_to_days_ago($timestamp)
 	{
-		return date('d-m-Y H:i:s', (int) round($t/1000, 0));;
+		$date1 = date('Y-m-d H:i:s', (int) round($timestamp/1000, 0));
+		$date2 = date('Y-m-d H:i:s');
+		$datetime1 = date_create($date1); echo $date1;
+		$datetime2 = date_create($date2);
+		$interval = date_diff($datetime1, $datetime2);
+		$dayordays = ($interval->format('%a') == 1) ? 'Dzień' : 'Dni'; //Working on VVVVV
+		$dayordays = ($interval->format('%h') <5 && $interval->format) ? 'Dzień' : 'Dni';
+		return $interval->format('%a Dni i %h Godzin temu');
 	}
 	
-	$matchesId = apiRequest('https://'.$region.".api.riotgames.com"."/lol/match/v3/matchlists/by-account/{$player->accountId}?endIndex=5");
+	$matchesId = apiRequest('https://'.$region.".api.riotgames.com"."/lol/match/v3/matchlists/by-account/{$player->accountId}?endIndex=10");
 	print_r($matchesId);
 	
 	
@@ -186,11 +193,13 @@
 						{
 							foreach($matchesId->matches as $m)
 							{
+								$m->lane = ($m->lane == 'NONE') ? '?' : $m->lane;
 								echo '
 								<div class="match">
 								<img src="http://ddragon.leagueoflegends.com/cdn/'.$versions[0].'/img/champion/'.$champions[$m->champion].'.png" onerror="this.src=\'img/noimg.jpg\';">
-								<div class=matchtext">
-								<h2>'.$m->lane.'</h2>
+								<div class="matchtext">
+								<span class="blue">Linia: </span><span class="red">'.$m->lane.'</span><br>
+								<span class="blue">Rozegrano: </span><span class="red">'.tstamp_to_days_ago($m->timestamp).'</span>
 								</div>
 								<div style="clear: both;"></div>
 								</div>
