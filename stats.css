@@ -25,11 +25,6 @@ h3
 	text-align: center;
 }
 
-.playerinfo h2
-{
-	color: #151519;
-}
-
 .playerinfo h3
 {
 	float: right;
@@ -111,6 +106,12 @@ img
 	margin-left: auto;
 	margin-right: auto;
 	padding: 30px;
+}
+
+.playerinfo h2
+{
+	font-size: 32px;
+	color: #151519;
 }
 
 .mastery

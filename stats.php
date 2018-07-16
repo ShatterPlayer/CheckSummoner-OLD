@@ -82,9 +82,21 @@
 		$datetime1 = date_create($date1); echo $date1;
 		$datetime2 = date_create($date2);
 		$interval = date_diff($datetime1, $datetime2);
-		$dayordays = ($interval->format('%a') == 1) ? 'Dzień' : 'Dni'; //Working on VVVVV
-		$dayordays = ($interval->format('%h') <5 && $interval->format) ? 'Dzień' : 'Dni';
-		return $interval->format('%a Dni i %h Godzin temu');
+		$days = ($interval->format('%a') == 1) ? '%a dzień' : '%a dni';
+		$hours = ($interval->format('%h') == 1) ? '%h godzinę' :
+		((($interval->format('%h') % 10) > 1 && ($interval->format('%h') % 10) < 5) && ($interval->format('%h') > 21 || $interval->format('%h') <5)) ? '%h godziny' : '%h godzin';
+		
+		if($interval->format('%a') == 0 && $interval->format('%h') == 0)
+			return $interval->format('niecałą godzinę temu');
+		
+		else if($interval->format('%a') == 0)
+			return $interval->format($hours.' temu');
+		
+		else if($interval->format('%h') == 0)
+			return $interval->format($days.' temu');
+		
+		else
+			return $interval->format($days.' i '.$hours.' temu');
 	}
 	
 	$matchesId = apiRequest('https://'.$region.".api.riotgames.com"."/lol/match/v3/matchlists/by-account/{$player->accountId}?endIndex=10");
