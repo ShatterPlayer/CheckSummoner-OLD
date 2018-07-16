@@ -1,2 +1,2 @@
 # CheckSummoner
-Very simple checking LoL's accounts.
+Very simple LoL's accounts checking site.
