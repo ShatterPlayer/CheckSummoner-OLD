@@ -79,7 +79,7 @@
 	{
 		$date1 = date('Y-m-d H:i:s', (int) round($timestamp/1000, 0));
 		$date2 = date('Y-m-d H:i:s');
-		$datetime1 = date_create($date1); echo $date1;
+		$datetime1 = date_create($date1);
 		$datetime2 = date_create($date2);
 		$interval = date_diff($datetime1, $datetime2);
 		$days = ($interval->format('%a') == 1) ? '%a dzień' : '%a dni';
@@ -214,6 +214,9 @@
 								<span class="blue">Rozegrano: </span><span class="red">'.tstamp_to_days_ago($m->timestamp).'</span>
 								</div>
 								<div style="clear: both;"></div>
+								<div class="matchoverlay">
+								<div class="moltext"><span class="blue">Zobacz</span><span class="red"> szczegóły</span></div>
+								</div>
 								</div>
 								';
 							}
