@@ -17,7 +17,7 @@
 	}
 	
 	$secret_keys = require_once "secrets.php";
-	/*
+	
 		$responseKey = $_POST['g-recaptcha-response'];
 		$ip = $_SERVER['REMOTE_ADDR'];
 		$url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret_keys[1]&response=$responseKey&remoteip=$ip";
@@ -31,7 +31,7 @@
 		$_SESSION['error'] = "Udowodnij, że nie jesteś robotem!";
 		header("Location: index.php#error"); exit();
 		}
-	*/
+	
 	
 	$nick = $_POST['nick'];
 	$region = $_POST['region'];
@@ -100,7 +100,6 @@
 	}
 	
 	$matchesId = apiRequest('https://'.$region.".api.riotgames.com"."/lol/match/v3/matchlists/by-account/{$player->accountId}?endIndex=10");
-	print_r($matchesId);
 	
 	
 ?>
@@ -122,6 +121,25 @@
 		<link rel="stylesheet" href="spinner.css">
 		<link rel="stylesheet" type="text/css" href="preloader/preloader.css">
 		<script src="preloader/preloader.js"></script>
+		
+		<!--Favicon-->
+		<link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+		<!-- -->
 		
 		<!--[if lt IE 9]>
 			<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -215,7 +233,7 @@
 								</div>
 								<div style="clear: both;"></div>
 								<div class="matchoverlay">
-								<div class="moltext"><span class="blue">Zobacz</span><span class="red"> szczegóły</span></div>
+								<div class="moltext"><span class="blue">Zobacz</span><span class="red"> szczegóły <br>(już wkrótce)</span></div>
 								</div>
 								</div>
 								';
