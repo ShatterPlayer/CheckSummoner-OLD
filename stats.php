@@ -1,9 +1,9 @@
 <?php
 	session_start();
 	
-	//error_reporting(E_STRICT);
+	error_reporting(E_STRICT);
 	
-	if(!isset($_POST['nick']))
+	if(!isset($_POST['nick']) && !isset($_POST['region']))
 	{
 		header('Location: index.php#error');
 		exit();
@@ -59,15 +59,26 @@
 		{	
 			$_SESSION['nick'] = $nick;
 			$_SESSION['select'] = $_POST['region'];
-			$_SESSION['error'] = "Wystąpił błąd. Spróbuj ponownie później! (kod: ".$player->status->status_code.")";
+			$_SESSION['error'] = "Wystąpił błąd. Spróbuj ponownie za chwilę! (kod: ".$player->status->status_code.")";
 			header('Location: index.php#error'); exit();
 		}
 	}
 	
-	$champions = require_once 'champions.php';
-	$versions = apiRequest('https://ddragon.leagueoflegends.com/api/versions.json');
-	
+	try
+	{
 	$mastery = apiRequest('https://'.$region.".api.riotgames.com"."/lol/champion-mastery/v3/champion-masteries/by-summoner/{$player->id}");
+	if(!isset($mastery)) throw new Exception();
+	
+	$matchesId = apiRequest('https://'.$region.".api.riotgames.com"."/lol/match/v3/matchlists/by-account/{$player->accountId}?endIndex=10");
+	if(!isset($matchesId)) throw new Exception();
+	}
+	catch(Exception $e)
+	{
+		$_SESSION['nick'] = $nick;
+		$_SESSION['select'] = $_POST['region'];
+		$_SESSION['error'] = "Wystąpił błąd. Spróbuj ponownie za chwilę! (kod: ".$e->getCode().")";
+		header('Location: index.php#error'); exit();
+	}
 	
 	function exist($v)
 	{
@@ -82,10 +93,22 @@
 		$datetime1 = date_create($date1);
 		$datetime2 = date_create($date2);
 		$interval = date_diff($datetime1, $datetime2);
-		$days = ($interval->format('%a') == 1) ? '%a dzień' : '%a dni';
-		$hours = ($interval->format('%h') == 1) ? '%h godzinę' :
-		((($interval->format('%h') % 10) > 1 && ($interval->format('%h') % 10) < 5) && ($interval->format('%h') > 21 || $interval->format('%h') <5)) ? '%h godziny' : '%h godzin';
 		
+		//Days
+		if($interval->format('%a') == 1)
+			$days = '%a dzień';
+		else
+			$days = '%a dni';
+		
+		//Hours
+		if($interval->format('%h') == 1)
+			$hours = '%h godzinę';
+		else if((($interval->format('%h') % 10) > 1 && ($interval->format('%h') % 10) < 5) && ($interval->format('%h') > 21 || $interval->format('%h') <5))
+			$hours =  '%h godziny';
+		else
+				$hours = '%h godzin';
+			
+		//Return wariants
 		if($interval->format('%a') == 0 && $interval->format('%h') == 0)
 			return $interval->format('niecałą godzinę temu');
 		
@@ -99,8 +122,9 @@
 			return $interval->format($days.' i '.$hours.' temu');
 	}
 	
-	$matchesId = apiRequest('https://'.$region.".api.riotgames.com"."/lol/match/v3/matchlists/by-account/{$player->accountId}?endIndex=10");
-	
+	$champions = require_once 'champions.php';
+
+	$versions = apiRequest('https://ddragon.leagueoflegends.com/api/versions.json');
 	
 ?>
 
@@ -232,7 +256,7 @@
 								<span class="blue">Rozegrano: </span><span class="red">'.tstamp_to_days_ago($m->timestamp).'</span>
 								</div>
 								<div style="clear: both;"></div>
-								<div class="matchoverlay">
+								<div class="matchoverlay" style="display: none;">
 								<div class="moltext"><span class="blue">Zobacz</span><span class="red"> szczegóły <br>(już wkrótce)</span></div>
 								</div>
 								</div>

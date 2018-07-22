@@ -91,26 +91,16 @@
 						<option value="na1" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='na1' ) { echo 'selected'; unset($_SESSION[
 						    'select']);} ?>>NA</div>
 			</option>
-			<option value="eun1" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='eun1' ) { echo 'selected'; unset($_SESSION[
-			    'select']);} ?>>EUNE</option>
-			<option value="euw1" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='euw1' ) { echo 'selected'; unset($_SESSION[
-			    'select']);} ?>>EUW</option>
-			<option value="oc1" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='oc1' ) { echo 'selected'; unset($_SESSION[
-			    'select']);} ?>>OCE</option>
-			<option value="la1" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='la1' ) { echo 'selected'; unset($_SESSION[
-			    'select']);} ?>>LAN</option>
-			<option value="la2" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='la2' ) { echo 'selected'; unset($_SESSION[
-			    'select']);} ?>>LAS</option>
-			<option value="br1" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='br1' ) { echo 'selected'; unset($_SESSION[
-			    'select']);} ?>>BR</option>
-			<option value="jp1" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='jp1' ) { echo 'selected'; unset($_SESSION[
-			    'select']);} ?>>JP</option>
-			<option value="kr" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='kr' ) { echo 'selected'; unset($_SESSION[
-			    'select']);} ?>>KR</option>
-			<option value="tr1" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='tr1' ) { echo 'selected'; unset($_SESSION[
-			    'select']);} ?>>TR</option>
-			<option value="ru" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='ru' ) { echo 'selected'; unset($_SESSION[
-			    'select']);} ?>>RU</option>
+			<option value="eun1" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='eun1' ) { echo 'selected'; unset($_SESSION['select']);} ?>>EUNE</option>
+			<option value="euw1" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='euw1' ) { echo 'selected'; unset($_SESSION['select']);} ?>>EUW</option>
+			<option value="oc1" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='oc1' ) { echo 'selected'; unset($_SESSION['select']);} ?>>OCE</option>
+			<option value="la1" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='la1' ) { echo 'selected'; unset($_SESSION['select']);} ?>>LAN</option>
+			<option value="la2" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='la2' ) { echo 'selected'; unset($_SESSION['select']);} ?>>LAS</option>
+			<option value="br1" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='br1' ) { echo 'selected'; unset($_SESSION['select']);} ?>>BR</option>
+			<option value="jp1" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='jp1' ) { echo 'selected'; unset($_SESSION['select']);} ?>>JP</option>
+			<option value="kr" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='kr' ) { echo 'selected'; unset($_SESSION['select']);} ?>>KR</option>
+			<option value="tr1" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='tr1' ) { echo 'selected'; unset($_SESSION['select']);} ?>>TR</option>
+			<option value="ru" <?php if(isset($_SESSION[ 'select']) && $_SESSION[ 'select']=='ru' ) { echo 'selected'; unset($_SESSION['select']);} ?>>RU</option>
 			</select>
 			<input type="submit" value="SPRAWDŹ STATYSTYKI">
 			<div style="clear: both"></div>
