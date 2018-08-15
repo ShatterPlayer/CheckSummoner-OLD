@@ -159,14 +159,14 @@ header
 .img1
 {
 	position: absolute;
-	top: 984px;
+	top: 955px;
 	left: 10%;
 }
 
 .img2
 {
 	position: absolute;
-	top: 984px;
+	top: 955px;
 	right: 10%;
 }
 
@@ -244,11 +244,12 @@ header
 	line-height: 23px;
 	background-color: #09090c;
 }
+
 /* Mobile Devices */
 
 @media only screen and (max-width: 680px)
 {
-	.img1, .img2, .qmark 
+	.qmark 
 	{
 		display: none;
 	}
@@ -267,8 +268,17 @@ header
 	{
 		font-size: 20px;
 	}
-
+	
+	#serverinfo
+	{
+		bottom: 55px;
+		right: 0;
+		opacity: 1;
+		width: 280px;
+	}
 }
+
+@media only screen and (max-width: 900px) { .img1, .img2 {display: none;}}
 
 /*  Computers, Laptops, etc */
 
