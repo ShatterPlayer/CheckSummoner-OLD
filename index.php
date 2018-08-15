@@ -4,6 +4,19 @@
 
 <head>
 
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122734777-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-122734777-1');
+	</script>
+
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+	
 	<title>CheckSummoner - Statystyki graczy League of Legends</title>
 	<meta name="description" content="Sprawdź statystyki graczy League of Legends z całego świata - szybko i bezproblemowo. CheckSummoner to wyjtkowo prosta w obsłudze strona, dzięki której jesteś w stanie sprawdzić statystyki danego gracza.">
 	<meta name="keywords" content="league, legends, lol, statystyki, mecze, summoner, stats, check, summoner, checksummoner, ga, ShatterPlayer">
@@ -69,7 +82,8 @@
 	<header>
 	
 		<div class="logo">
-			<img src="img/banner.png">
+			<img src="img/banner.png" height="85">
+			<img src="img/bannermobile.png"height="50" >
 		</div>
 		
 	</header>

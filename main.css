@@ -112,16 +112,9 @@ header
 	margin-right: auto;
 	text-align: center;
 	font-weight: 900;
-	padding: 18px 0;
-	min-height: 30px;
 	font-size: 60px;
 	letter-spacing: 2px;
-	padding-top: 20px;
-}
-
-.logo img
-{
-	height: 85px
+	padding-top: 10px;
 }
 
 .maintext
@@ -250,6 +243,46 @@ header
 	color: #fff;
 	line-height: 23px;
 	background-color: #09090c;
+}
+/* Mobile Devices */
+
+@media only screen and (max-width: 680px)
+{
+	.img1, .img2, .qmark 
+	{
+		display: none;
+	}
+	
+	.logo img:first-child
+	{
+		display: none;
+	}
+	
+	h2
+	{
+		font-size: 30px !important;
+	}
+	
+	p
+	{
+		font-size: 20px;
+	}
+
+}
+
+/*  Computers, Laptops, etc */
+
+@media only screen and (min-width: 681px)
+{
+	.logo
+	{
+		padding-top: 5px;
+	}
+	
+	.logo img:last-child
+	{
+		display: none;
+	}
 }
 
 input:-moz-placeholder {color: #4e56a7}

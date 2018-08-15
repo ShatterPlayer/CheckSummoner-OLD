@@ -1,0 +1,40 @@
+/* Mobile Devices */
+
+@media only screen and (max-width: 680px)
+{
+	.img1, .img2, .qmark 
+	{
+		display: none;
+	}
+	
+	.logo img:first-child
+	{
+		display: none;
+	}
+	
+	h2
+	{
+		font-size: 30px !important;
+	}
+	
+	p
+	{
+		font-size: 20px;
+	}
+
+}
+
+/*  Computers, Laptops, etc */
+
+@media only screen and (min-width: 681px)
+{
+	.logo
+	{
+		padding-top: 5px;
+	}
+	
+	.logo img:last-child
+	{
+		display: none;
+	}
+}
