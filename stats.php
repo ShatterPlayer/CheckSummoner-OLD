@@ -16,6 +16,8 @@
 		header("Location: index.php#error"); exit();
 	}
 	
+	//Captcha, comment under code to disable
+	
 	$secret_keys = require_once "secrets.php";
 	
 		$responseKey = $_POST['g-recaptcha-response'];
@@ -32,6 +34,7 @@
 		header("Location: index.php#error"); exit();
 		}
 	
+	//###########
 	
 	$nick = $_POST['nick'];
 	$region = $_POST['region'];
