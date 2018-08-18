@@ -16,9 +16,9 @@
 		header("Location: index.php#error"); exit();
 	}
 	
-	//Captcha, comment under code to disable
-	
 	$secret_keys = require_once "secrets.php";
+	
+	/*Captcha, comment under code to disable
 	
 		$responseKey = $_POST['g-recaptcha-response'];
 		$ip = $_SERVER['REMOTE_ADDR'];
@@ -33,7 +33,7 @@
 		$_SESSION['error'] = "Udowodnij, że nie jesteś robotem!";
 		header("Location: index.php#error"); exit();
 		}
-	
+	*/
 	//###########
 	
 	$nick = $_POST['nick'];
@@ -135,6 +135,14 @@
 <html>
 	<head>
 		
+		<!-- Clear Cache -->
+		<meta http-equiv="Expires" content="0" />
+		<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+		<meta http-equiv="Cache-Control" content="post-check=0, pre-check=0" />
+		<meta http-equiv="Pragma" content="no-cache" />
+	
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+		
 		<title><?=exist($player->name)?> - Statystyki Gracza</title>
 		<meta name="description" content="Sprawdź statystyki graczy League of Legends z całego świata - szybko i bezproblemowo">
 		<meta name="keywords" content="league, legends, lol, statystyki, mecze, summoner">
@@ -186,8 +194,11 @@
 		<header>
 		
 			<div class="logo">
-				<a href="index.php"><img src="img/banner.png"></a>
-			</div>
+				<a href="index.php">
+					<img src="img/banner.png" height="85">
+					<img src="img/bannermobile.png"height="50" >
+				</a>
+			</div>	
 			
 		</header>
 		<main>

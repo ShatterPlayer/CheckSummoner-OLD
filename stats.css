@@ -1,4 +1,9 @@
 /* Background pattern from Toptal Subtle Patterns */
+html
+{
+	width: 100%;
+}
+
 body
 {
 	cursor: default;
@@ -95,7 +100,7 @@ img
 .container
 {
 	background-image: url('img/country-quilt.png');
-	width: 705px;
+	max-width: 680px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -213,7 +218,7 @@ img
 .matchtext
 {
 	float: left;
-	width: 545px;
+	width: 520px;
 	font-weight: 900;
 	text-align: center;
 	font-size: 24px;
@@ -258,4 +263,27 @@ img
 	color: #fff;
 	line-height: 23px;
 	background-color: #040408;
+}
+
+/* Mobile Devices */
+@media only screen and (max-width: 680px)
+{
+	.logo img:first-child
+	{
+		display: none;
+	}
+}
+
+/*  Computers, Laptops, etc */
+@media only screen and (min-width: 681px)
+{
+	.logo
+	{
+		padding-top: 5px;
+	}
+	
+	.logo img:last-child
+	{
+		display: none;
+	}
 }
