@@ -18,7 +18,7 @@
 	
 	$secret_keys = require_once "secrets.php";
 	
-	/*Captcha, comment under code to disable
+	//Captcha, comment under code to disable
 	
 		$responseKey = $_POST['g-recaptcha-response'];
 		$ip = $_SERVER['REMOTE_ADDR'];
@@ -33,7 +33,7 @@
 		$_SESSION['error'] = "Udowodnij, że nie jesteś robotem!";
 		header("Location: index.php#error"); exit();
 		}
-	*/
+	
 	//###########
 	
 	$nick = $_POST['nick'];
@@ -206,50 +206,51 @@
 				
 				<div class="playerinfo">
 					
-					<img class="floatleft" 
-					src="http://ddragon.leagueoflegends.com/cdn/<?=$versions[0]?>/img/profileicon/<?=$player->profileIconId?>.png" onerror="this.src='img/noimg.jpg';" width="100">
-					<h2 class="floatleft"><?=exist($player->name)?></h2>
-					<h3><span class="red">LVL </span><span class="blue"><?=exist($player->summonerLevel)?></span></h3>
+					<img src="http://ddragon.leagueoflegends.com/cdn/<?=$versions[0]?>/img/profileicon/<?=$player->profileIconId?>.png" onerror="this.src='img/noimg.jpg';">
+					<h2><?=exist($player->name)?></h2>
 					<div style="clear: both;"></div>
+					<div class="playerlvl"><span class="red">LVL </span><span class="blue"><?=exist($player->summonerLevel)?></span></div>
 					
 				</div>
 				<div class="mastery">
 					<h2><span class="blue">Maestrie </span><span class="red">Championów</span></h2>
-					<figure class="place1">
-						<figcaption class="place">I</figcaption>
-						<!--OBRAZEK-->
-						<img src="http://ddragon.leagueoflegends.com/cdn/<?=$versions[0]?>/img/champion/<?=$champions[$mastery[0]->championId]?>.png" onerror="this.src='img/noimg.jpg';">
-						<!--NAKŁADKA Z PUNKTAMI-->
-						<div class="overlay">
-							<div class="oltext"><span class="blue"><?=exist($mastery[0]->championPoints)?></span><br>
-							<span class="red">PKT</span></div></div>
+					<div class="places">
+						<figure class="place1">
+							<figcaption class="place">I</figcaption>
+							<!--OBRAZEK-->
+							<img src="http://ddragon.leagueoflegends.com/cdn/<?=$versions[0]?>/img/champion/<?=$champions[$mastery[0]->championId]?>.png" onerror="this.src='img/noimg.jpg';">
+							<!--NAKŁADKA Z PUNKTAMI-->
+							<div class="overlay">
+								<div class="oltext"><span class="blue"><?=exist($mastery[0]->championPoints)?></span><br>
+								<span class="red">PKT</span></div></div>
+								<!--LVL-->
+								<figcaption class="lvl">LVL <?=exist($mastery[0]->championLevel)?></figcaption>
+								
+						</figure>
+						
+						<figure class="place2">
+							<figcaption class="place">II</figcaption>
+							<!--OBRAZEK-->
+							<img src="http://ddragon.leagueoflegends.com/cdn/<?=$versions[0]?>/img/champion/<?=$champions[$mastery[1]->championId]?>.png" onerror="this.src='img/noimg.jpg';">
+							<!--NAKŁADKA Z PUNKTAMI-->
+							<div class="overlay">
+							<div class="oltext"><span class="blue"><?=exist($mastery[1]->championPoints)?></span><br><span class="red">PKT</span></div></div>
 							<!--LVL-->
-							<figcaption class="lvl">LVL <?=exist($mastery[0]->championLevel)?></figcaption>
-							
-					</figure>
-					
-					<figure class="place2">
-						<figcaption class="place">II</figcaption>
-						<!--OBRAZEK-->
-						<img src="http://ddragon.leagueoflegends.com/cdn/<?=$versions[0]?>/img/champion/<?=$champions[$mastery[1]->championId]?>.png" onerror="this.src='img/noimg.jpg';">
-						<!--NAKŁADKA Z PUNKTAMI-->
-						<div class="overlay">
-						<div class="oltext"><span class="blue"><?=exist($mastery[1]->championPoints)?></span><br><span class="red">PKT</span></div></div>
-						<!--LVL-->
-						<figcaption class="lvl">LVL <?=exist($mastery[1]->championLevel)?></figcaption>
-					</figure>
-					
-					<figure class="place3">
-						<figcaption class="place">III</figcaption>
-						<!--OBRAZEK-->
-						<img src="http://ddragon.leagueoflegends.com/cdn/<?=$versions[0]?>/img/champion/<?=$champions[$mastery[2]->championId]?>.png" onerror="this.src='img/noimg.jpg';">
-						<!--NAKŁADKA Z PUNKTAMI-->
-						<div class="overlay">
-						<div class="oltext"><span class="blue"><?=exist($mastery[2]->championPoints)?></span><br><span class="red">PKT</span></div></div>
-						<!--LVL-->
-						<figcaption class="lvl">LVL <?=exist($mastery[2]->championLevel)?></figcaption>
-					</figure>
-					<div style="clear: both;"></div>
+							<figcaption class="lvl">LVL <?=exist($mastery[1]->championLevel)?></figcaption>
+						</figure>
+						
+						<figure class="place3">
+							<figcaption class="place">III</figcaption>
+							<!--OBRAZEK-->
+							<img src="http://ddragon.leagueoflegends.com/cdn/<?=$versions[0]?>/img/champion/<?=$champions[$mastery[2]->championId]?>.png" onerror="this.src='img/noimg.jpg';">
+							<!--NAKŁADKA Z PUNKTAMI-->
+							<div class="overlay">
+							<div class="oltext"><span class="blue"><?=exist($mastery[2]->championPoints)?></span><br><span class="red">PKT</span></div></div>
+							<!--LVL-->
+							<figcaption class="lvl">LVL <?=exist($mastery[2]->championLevel)?></figcaption>
+						</figure>
+						<div style="clear: both;"></div>
+					</div>
 				</div>
 				
 				<div class="matches">

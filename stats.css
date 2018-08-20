@@ -30,18 +30,6 @@ h3
 	text-align: center;
 }
 
-.playerinfo h3
-{
-	float: right;
-	font-size: 25px;
-	line-height: 80px;
-	color: #151519;
-	margin: 10px 60px;
-	font-weight: 900;
-	text-align: left;
-	letter-spacing: 4px;
-}
-
 a:-webkit-any-link
 {
 	color: #000;
@@ -111,12 +99,29 @@ img
 	margin-left: auto;
 	margin-right: auto;
 	padding: 30px;
+	position: relative;
 }
 
 .playerinfo h2
 {
+	float: left;
 	font-size: 32px;
 	color: #151519;
+}
+
+.playerinfo img
+{
+	float: left;
+	width: 100px;
+}
+
+.playerlvl
+{
+	font-size: 25px;
+	font-weight: 900;
+	position: absolute;
+	right: 20px;
+	top: 66px;
 }
 
 .mastery
@@ -191,11 +196,6 @@ img
 	margin-top: 35px;
 }
 
-.floatleft
-{
-	float: left;
-}
-
 .matches
 {
 	background-color: rgba(0, 0, 0, 0.1);
@@ -268,9 +268,94 @@ img
 /* Mobile Devices */
 @media only screen and (max-width: 680px)
 {
+	body
+	{
+		background-image: none;
+	}
+	
 	.logo img:first-child
 	{
 		display: none;
+	}
+	
+	.playerinfo
+	{
+		padding: 30px 15px;
+	}
+	
+	.playerinfo img
+	{
+		width: 70px;
+	}
+	
+	.playerinfo h2
+	{
+		font-size: 17px;
+		line-height: 50px;
+		margin: 10px;
+	}
+	
+	.playerlvl
+	{
+		font-size: 15px;
+		top: 55px;
+	}
+	
+	.mastery
+	{
+		width: 100%;
+		padding: 10px 0;
+	}
+	
+	h2
+	{
+		font-size: 26px;
+	}
+	
+	figure
+	{
+		margin: 5px;
+	}
+	
+	figure img
+	{
+		width: 70px;
+	}
+	
+	.overlay
+	{
+		width: 70px;
+		height: 70px;
+	}
+	
+	.oltext
+	{
+		margin-top: 20px;
+		font-size: 13px;
+	}
+	
+	.places
+	{
+		width: 240px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.place, .lvl
+	{
+		font-size: 15px;
+	}
+	
+	.match img
+	{
+		width: 70px;
+	}
+	
+	.matchtext
+	{
+		width: calc(100% - 70px);
+		font-size: 12px;
+		margin-top: 16px;
 	}
 }
 
