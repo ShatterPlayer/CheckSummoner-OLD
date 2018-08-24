@@ -67,7 +67,7 @@
 
 </head>
 
-<body>
+<body onselectstart="return false">
 
 	<!-- PRELOADER -->
 	<div class="preloader-wrapper">

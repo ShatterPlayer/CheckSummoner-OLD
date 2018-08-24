@@ -63,16 +63,10 @@ img
 	width: 100%;
 	text-align: center;
 	font-weight: 900;
-	padding: 18px 0;
 	background-color: #151519;
 	font-size: 45px;
 	letter-spacing: 2px;
-}
-
-.logo img
-{
-	margin: 0 10px;
-	height: 85px
+	padding-top: 8px;
 }
 
 .blue
@@ -326,6 +320,7 @@ img
 	{
 		width: 70px;
 		height: 70px;
+		top: 29px;
 	}
 	
 	.oltext
@@ -357,16 +352,17 @@ img
 		font-size: 12px;
 		margin-top: 16px;
 	}
+	
+	.footer
+	{
+		font-size: 12px;
+	}
 }
 
 /*  Computers, Laptops, etc */
+
 @media only screen and (min-width: 681px)
-{
-	.logo
-	{
-		padding-top: 5px;
-	}
-	
+{	
 	.logo img:last-child
 	{
 		display: none;

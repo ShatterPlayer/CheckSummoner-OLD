@@ -132,7 +132,7 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 	<head>
 		
 		<!-- Clear Cache -->
@@ -181,7 +181,7 @@
 		<![endif]-->
 		
 	</head>
-	<body>
+	<body onselectstart="return false">
 		
 		<!-- PRELOADER -->
 		<div class="preloader-wrapper">
@@ -196,7 +196,7 @@
 			<div class="logo">
 				<a href="index.php">
 					<img src="img/banner.png" height="85">
-					<img src="img/bannermobile.png"height="50" >
+					<img src="img/bannermobile.png" height="50" >
 				</a>
 			</div>	
 			

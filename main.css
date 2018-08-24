@@ -114,7 +114,7 @@ header
 	font-weight: 900;
 	font-size: 60px;
 	letter-spacing: 2px;
-	padding-top: 10px;
+	padding-top: 5px;
 }
 
 .maintext
@@ -275,6 +275,11 @@ header
 		opacity: 1;
 		width: 280px;
 	}
+	
+	.footer
+	{
+		font-size: 12px;
+	}
 }
 
 @media only screen and (max-width: 900px) { .img1, .img2 {display: none;}}
@@ -282,12 +287,7 @@ header
 /*  Computers, Laptops, etc */
 
 @media only screen and (min-width: 681px)
-{
-	.logo
-	{
-		padding-top: 5px;
-	}
-	
+{	
 	.logo img:last-child
 	{
 		display: none;
