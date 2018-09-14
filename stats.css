@@ -42,13 +42,13 @@ a
 	text-decoration: none;
 }
 
-figure
+.places figure
 {
 	float: left;
 	position: relative;
 }
 
-figure img
+.places figure img
 {
 	border-radius: 50%;
 }
@@ -116,6 +116,31 @@ img
 	position: absolute;
 	right: 20px;
 	top: 66px;
+}
+
+.league
+{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	width: 600px;
+}
+
+.league figure
+{
+	margin: 0 50px;
+	float: left;
+}
+
+.league figure figcaption
+{
+	text-align: center;
+	font-weight: 900;
+}
+
+.league img
+{
+	float: none;
 }
 
 .mastery
@@ -219,35 +244,6 @@ img
 	margin-top: 26px;
 }
 
-.matchoverlay
-{
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 9999999;
-	width: 665px;
-	height: 120px;
-	background-color: #151519;
-	padding: 10px;
-	opacity: 0;
-	transition: opacity .2s ease-in-out;
-}
-
-.matchoverlay:hover
-{
-	opacity: 0.95;
-}
-
-.moltext
-{
-	font-weight: 900;
-	font-size: 40px;
-	margin-top: 30px;
-	width: 100%;
-	text-align: center;
-	
-}
-
 .footer
 {
 	width: 100%;
@@ -304,16 +300,6 @@ img
 	h2
 	{
 		font-size: 26px;
-	}
-	
-	figure
-	{
-		margin: 5px;
-	}
-	
-	figure img
-	{
-		width: 70px;
 	}
 	
 	.overlay

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 	session_start();
 	
@@ -8,14 +9,16 @@
 		header('Location: index.php#error');
 		exit();
 	}
-	
-	if(!ctype_alnum($_POST['nick']))
+
+	require_once 'allowed_characters.php';
+
+	if(!preg_match('/^['.$chars.']+$/i', $_POST['nick']))
 	{
 		$_SESSION['select'] = $_POST['region'];
 		$_SESSION['error'] = "Podany nick jest nieprawidłowy!";
 		header("Location: index.php#error"); exit();
 	}
-	
+
 	$secret_keys = require_once "secrets.php";
 	
 	//Captcha, comment under code to disable
@@ -36,13 +39,14 @@
 	
 	//###########
 	
-	$nick = $_POST['nick'];
-	$region = $_POST['region'];
-	
 	$API_KEY=$secret_keys[0];
 	require_once "apiconnect.php";
+
+	$nick = rawurlencode($_POST['nick']);
+	$region = $_POST['region'];
+
 	$player = apiRequest('https://'.$region.".api.riotgames.com"."/lol/summoner/v3/summoners/by-name/{$nick}");
-	
+
 	if(isset($player->status->status_code))
 	{
 		if($player->status->status_code == 404)
@@ -51,16 +55,16 @@
 			$_SESSION['error'] = "Gracz o takim nicku nie istnieje!";
 			header('Location: index.php#error'); exit();
 		}
-		if($player->status->status_code == 429)
+		else if($player->status->status_code == 429)
 		{
-			$_SESSION['nick'] = $nick;
+			$_SESSION['nick'] = $_POST['nick'];
 			$_SESSION['select'] = $_POST['region'];
 			$_SESSION['error'] = "Strona jest przeciążona. Spróbuj ponownie za chwilę!";
 			header('Location: index.php#error'); exit();
 		}
 		else
 		{	
-			$_SESSION['nick'] = $nick;
+			$_SESSION['nick'] = $_POST['nick'];
 			$_SESSION['select'] = $_POST['region'];
 			$_SESSION['error'] = "Wystąpił błąd. Spróbuj ponownie za chwilę! (kod: ".$player->status->status_code.")";
 			header('Location: index.php#error'); exit();
@@ -69,11 +73,14 @@
 	
 	try
 	{
-	$mastery = apiRequest('https://'.$region.".api.riotgames.com"."/lol/champion-mastery/v3/champion-masteries/by-summoner/{$player->id}");
-	if(!isset($mastery)) throw new Exception();
-	
-	$matchesId = apiRequest('https://'.$region.".api.riotgames.com"."/lol/match/v3/matchlists/by-account/{$player->accountId}?endIndex=10");
-	if(!isset($matchesId)) throw new Exception();
+		//$league = apiRequest('https://'.$region.".api.riotgames.com"."/lol/league/v3/positions/by-summoner/{$player->id}");
+		//if(!isset($league)) throw new Exception();
+
+		$mastery = apiRequest('https://'.$region.".api.riotgames.com"."/lol/champion-mastery/v3/champion-masteries/by-summoner/{$player->id}");
+		if(!isset($mastery)) throw new Exception();
+		
+		$matchesId = apiRequest('https://'.$region.".api.riotgames.com"."/lol/match/v3/matchlists/by-account/{$player->accountId}?endIndex=10");
+		if(!isset($matchesId)) throw new Exception();
 	}
 	catch(Exception $e)
 	{
@@ -82,7 +89,7 @@
 		$_SESSION['error'] = "Wystąpił błąd. Spróbuj ponownie za chwilę! (kod: ".$e->getCode().")";
 		header('Location: index.php#error'); exit();
 	}
-	
+
 	function exist($v)
 	{
 		if(isset($v)) return $v;
@@ -131,7 +138,6 @@
 	
 ?>
 
-<!DOCTYPE html>
 <html lang="pl">
 	<head>
 		
@@ -189,7 +195,7 @@
 				<div class="loader"><div class="sk-folding-cube"><div class="sk-cube1 sk-cube"></div><div class="sk-cube2 sk-cube"></div><div class="sk-cube4 sk-cube"></div><div class="sk-cube3 sk-cube"></div></div></div>
 				</div>
 		</div>
-		<!--------------------------->
+		<!-- ---------------------- -->
 		
 		<header>
 		
@@ -206,19 +212,34 @@
 				
 				<div class="playerinfo">
 					
-					<img src="http://ddragon.leagueoflegends.com/cdn/<?=$versions[0]?>/img/profileicon/<?=$player->profileIconId?>.png" onerror="this.src='img/noimg.jpg';">
+					<img src="https://ddragon.leagueoflegends.com/cdn/<?=$versions[0]?>/img/profileicon/<?=$player->profileIconId?>.png" onerror="this.src='img/noimg.jpg';">
 					<h2><?=exist($player->name)?></h2>
 					<div style="clear: both;"></div>
 					<div class="playerlvl"><span class="red">LVL </span><span class="blue"><?=exist($player->summonerLevel)?></span></div>
-					
+
+					<!--<div class="league">
+						<figure>
+							<img src="img/bronze.png" alt="?" width="100">
+						</figure>
+						<figure>
+							<img src="img/bronze.png" alt="?" width="100">
+							<figcaption><span class="red">Solo Queue</span></figcaption>
+							<figcaption><span class="blue">Bronz 5</span></figcaption>
+						</figure>
+						<figure>
+							<img src="img/bronze.png" alt="?" width="100">
+						</figure>
+						<div style="clear: both;"></div>
+					</div> -->
 				</div>
+
 				<div class="mastery">
 					<h2><span class="blue">Maestrie </span><span class="red">Championów</span></h2>
 					<div class="places">
-						<figure class="place1">
+						<figure>
 							<figcaption class="place">I</figcaption>
 							<!--OBRAZEK-->
-							<img src="http://ddragon.leagueoflegends.com/cdn/<?=$versions[0]?>/img/champion/<?=$champions[$mastery[0]->championId]?>.png" onerror="this.src='img/noimg.jpg';">
+							<img src="https://ddragon.leagueoflegends.com/cdn/<?=$versions[0]?>/img/champion/<?=$champions[$mastery[0]->championId]?>.png" onerror="this.src='img/noimg.jpg';">
 							<!--NAKŁADKA Z PUNKTAMI-->
 							<div class="overlay">
 								<div class="oltext"><span class="blue"><?=exist($mastery[0]->championPoints)?></span><br>
@@ -231,7 +252,7 @@
 						<figure class="place2">
 							<figcaption class="place">II</figcaption>
 							<!--OBRAZEK-->
-							<img src="http://ddragon.leagueoflegends.com/cdn/<?=$versions[0]?>/img/champion/<?=$champions[$mastery[1]->championId]?>.png" onerror="this.src='img/noimg.jpg';">
+							<img src="https://ddragon.leagueoflegends.com/cdn/<?=$versions[0]?>/img/champion/<?=$champions[$mastery[1]->championId]?>.png" onerror="this.src='img/noimg.jpg';">
 							<!--NAKŁADKA Z PUNKTAMI-->
 							<div class="overlay">
 							<div class="oltext"><span class="blue"><?=exist($mastery[1]->championPoints)?></span><br><span class="red">PKT</span></div></div>
@@ -242,7 +263,7 @@
 						<figure class="place3">
 							<figcaption class="place">III</figcaption>
 							<!--OBRAZEK-->
-							<img src="http://ddragon.leagueoflegends.com/cdn/<?=$versions[0]?>/img/champion/<?=$champions[$mastery[2]->championId]?>.png" onerror="this.src='img/noimg.jpg';">
+							<img src="https://ddragon.leagueoflegends.com/cdn/<?=$versions[0]?>/img/champion/<?=$champions[$mastery[2]->championId]?>.png" onerror="this.src='img/noimg.jpg';">
 							<!--NAKŁADKA Z PUNKTAMI-->
 							<div class="overlay">
 							<div class="oltext"><span class="blue"><?=exist($mastery[2]->championPoints)?></span><br><span class="red">PKT</span></div></div>
@@ -265,19 +286,17 @@
 								$m->lane = ($m->lane == 'NONE') ? '?' : $m->lane;
 								echo '
 								<div class="match">
-								<img src="http://ddragon.leagueoflegends.com/cdn/'.$versions[0].'/img/champion/'.$champions[$m->champion].'.png" onerror="this.src=\'img/noimg.jpg\';">
+								<img src="https://ddragon.leagueoflegends.com/cdn/'.$versions[0].'/img/champion/'.$champions[$m->champion].'.png" onerror="this.src=\'img/noimg.jpg\';">
 								<div class="matchtext">
 								<span class="blue">Linia: </span><span class="red">'.$m->lane.'</span><br>
 								<span class="blue">Rozegrano: </span><span class="red">'.tstamp_to_days_ago($m->timestamp).'</span>
 								</div>
 								<div style="clear: both;"></div>
-								<div class="matchoverlay" style="display: none;">
-								<div class="moltext"><span class="blue">Zobacz</span><span class="red"> szczegóły <br>(już wkrótce)</span></div>
-								</div>
 								</div>
 								';
 							}
 						}
+						print_r($league);
 					?>
 					
 				</div>
