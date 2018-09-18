@@ -322,6 +322,17 @@ img
 		margin-right: auto;
 	}
 	
+	.places figure
+	{
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+	
+	.places figure img
+	{
+		width: 70px;
+	}
+	
 	.place, .lvl
 	{
 		font-size: 15px;
