@@ -22,7 +22,7 @@
 	$secret_keys = require_once "secrets.php";
 	
 	//Captcha, comment under code to disable
-	
+	/*
 		$responseKey = $_POST['g-recaptcha-response'];
 		$ip = $_SERVER['REMOTE_ADDR'];
 		$url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret_keys[1]&response=$responseKey&remoteip=$ip";
@@ -36,7 +36,7 @@
 		$_SESSION['error'] = "Udowodnij, że nie jesteś robotem!";
 		header("Location: index.php#error"); exit();
 		}
-	
+	*/
 	//###########
 	
 	$API_KEY=$secret_keys[0];

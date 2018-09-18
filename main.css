@@ -3,21 +3,16 @@ body
 	margin: 0;
 	font-family: 'Lato', sans-serif;
 	background-color: #151519;
+	cursor: default;
+	text-align: center;
 }
 
 h2
 {
-	cursor: default;
 	font-weight: 900;
 	text-transform: uppercase;
 	margin-top: 170px;
-	font-size: 35px;
-}
-
-h3, p
-{
-	cursor: default;
-	text-align: center;
+	font-size: 40px;
 }
 
 p
@@ -28,21 +23,22 @@ p
 .paraminput h2
 {
 	margin-bottom: 60px;
-	margin-top: 170px;
-	font-size: 40px;
-	text-align: center;
+}
+
+input, select
+{
+	font-weight: 900;
+	border-radius: 10px;
+	outline: none;
+	height: 50px;
 }
 
 input[type=text]
 {
-	outline: none;
 	box-sizing: border-box;
 	width: 304px;
-	height: 50px;
 	font-size: 20px;
-	font-weight: 900;
 	border: 2px solid #4e56a7;
-	border-radius: 10px;
 	text-align: center;
 	background-color: #d7dcff;
 	color: #4e56a7;
@@ -58,13 +54,9 @@ input[type=text]:focus
 input[type=submit]
 {
 	margin-top: 10px;
-	height: 50px;
 	width: 190px;
-	outline: none;
 	background-color: #d6fcd9;
 	border: 2px solid #0c8e17;
-	border-radius: 10px;
-	font-weight: 900;
 	color: #0c8e17;
 	font-size: 12px;
 	float: left;
@@ -79,16 +71,12 @@ input[type=submit]:focus
 select
 {
 	margin-top: 10px;
-	height: 50px;
 	width: 106px;
 	color: #3d4596;
-	font-weight: 900;
 	font-size: 18px;
 	padding: 10px;
 	background-color: #d7dcff;
 	border: 2px solid #4e56a7;
-	border-radius: 10px;
-	outline: none;
 	margin-right: 5px;
 	margin-bottom: 17px;
 	float: left;
@@ -107,9 +95,6 @@ header
 
 .logo
 {
-	cursor: default;
-	margin-left: auto;
-	margin-right: auto;
 	text-align: center;
 	font-weight: 900;
 	font-size: 60px;
@@ -119,7 +104,6 @@ header
 
 .maintext
 {
-	width: 100%;
 	height: 500px;
 	text-align: center;
 	padding: 20px 0;
@@ -144,7 +128,6 @@ header
 
 .paraminput
 {
-	width: 100%;
 	height: 750px;
 	background-color: #151519;
 	padding: 20px 0;
@@ -195,7 +178,6 @@ header
 #serverinfo
 {
 	width: 250px;
-	text-align: center;
 	border: 2px solid #1A2275;
 	background-color: #d7dcff;
 	border-radius: 10px;
@@ -208,7 +190,6 @@ header
 	bottom: 305px;
 	opacity: 0;
 	transition: opacity .2s ease-in-out;
-	cursor: default;
 }
 
 .qmark
@@ -217,7 +198,7 @@ header
 	position: relative;
 	margin: 0;
 	border-radius: 50%;
-	right: 32px;
+	right: 170px;
 	bottom: 204px;
 	border: 2px solid #1A2275;
 }
@@ -239,7 +220,6 @@ header
 	width: 100%;
 	padding: 10px 0;
 	font-size: 15px;
-	text-align: center;
 	color: #fff;
 	line-height: 23px;
 	background-color: #09090c;
