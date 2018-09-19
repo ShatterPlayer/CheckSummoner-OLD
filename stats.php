@@ -2,16 +2,20 @@
 <?php
 	session_start();
 	
+	//Disable reporting
 	error_reporting(E_STRICT);
 	
+	//Disable "direct" open stats.php
 	if(!isset($_POST['nick']) && !isset($_POST['region']))
 	{
 		header('Location: index.php#error');
 		exit();
 	}
 
+	//Import allowed characters for given region
 	require_once 'allowed_characters.php';
 
+	//Check if nick have allowed characters
 	if(!preg_match('/^['.$chars.']+$/i', $_POST['nick']))
 	{
 		$_SESSION['select'] = $_POST['region'];
@@ -19,10 +23,10 @@
 		header("Location: index.php#error"); exit();
 	}
 
+	//Import secret keys
 	$secret_keys = require_once "secrets.php";
 	
-	//Captcha, comment under code to disable
-	
+	//reCaptcha, comment under code to disable
 		$responseKey = $_POST['g-recaptcha-response'];
 		$ip = $_SERVER['REMOTE_ADDR'];
 		$url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret_keys[1]&response=$responseKey&remoteip=$ip";
@@ -36,25 +40,31 @@
 		$_SESSION['error'] = "Udowodnij, że nie jesteś robotem!";
 		header("Location: index.php#error"); exit();
 		}
-	
 	//###########
 	
 	$API_KEY=$secret_keys[0];
+	
+	//Import function which is used to make HTTP requests (using cURL)
 	require_once "apiconnect.php";
 
+	//URL encode (e. g. from "Check Summoner" to "Check%20Summoner")
 	$nick = rawurlencode($_POST['nick']);
 	$region = $_POST['region'];
 
+	//Request for player informations
 	$player = apiRequest('https://'.$region.".api.riotgames.com"."/lol/summoner/v3/summoners/by-name/{$nick}");
 
+	//Player not exist???
 	if(isset($player->status->status_code))
 	{
+		//Not exist
 		if($player->status->status_code == 404)
 		{	
 			$_SESSION['select'] = $_POST['region'];
 			$_SESSION['error'] = "Gracz o takim nicku nie istnieje!";
 			header('Location: index.php#error'); exit();
 		}
+		//Site overloaded
 		else if($player->status->status_code == 429)
 		{
 			$_SESSION['nick'] = $_POST['nick'];
@@ -62,6 +72,7 @@
 			$_SESSION['error'] = "Strona jest przeciążona. Spróbuj ponownie za chwilę!";
 			header('Location: index.php#error'); exit();
 		}
+		//Something else???
 		else
 		{	
 			$_SESSION['nick'] = $_POST['nick'];
@@ -71,6 +82,7 @@
 		}
 	}
 	
+	//Request for other player informations
 	try
 	{
 		//$league = apiRequest('https://'.$region.".api.riotgames.com"."/lol/league/v3/positions/by-summoner/{$player->id}");
@@ -82,6 +94,7 @@
 		$matchesId = apiRequest('https://'.$region.".api.riotgames.com"."/lol/match/v3/matchlists/by-account/{$player->accountId}?endIndex=10");
 		if(!isset($matchesId)) throw new Exception();
 	}
+	//Something went wrong
 	catch(Exception $e)
 	{
 		$_SESSION['nick'] = $nick;
@@ -90,12 +103,14 @@
 		header('Location: index.php#error'); exit();
 	}
 
+	//Simple function - variable not exist -> ?
 	function exist($v)
 	{
 		if(isset($v)) return $v;
 		else return '?';
 	}
 	
+	//Very advanced function which make days ago from timestamp in miliseconds
 	function tstamp_to_days_ago($timestamp)
 	{
 		$date1 = date('Y-m-d H:i:s', (int) round($timestamp/1000, 0));
@@ -132,8 +147,10 @@
 			return $interval->format($days.' i '.$hours.' temu');
 	}
 	
+	//Champions keys used to get champions images
 	$champions = require_once 'champions.php';
 
+	//Version of League of Legends
 	$versions = apiRequest('https://ddragon.leagueoflegends.com/api/versions.json');
 	
 ?>
