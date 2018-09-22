@@ -171,14 +171,14 @@
 		<meta name="keywords" content="league, legends, lol, statystyki, mecze, summoner">
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="stylesheet" href="stats.css">
+		<link rel="stylesheet" href="css/stats.css">
 		<link href="https://fonts.googleapis.com/css?family=Lato:400,900&amp;subset=latin-ext" rel="stylesheet">
-		<script src="imgerror.js" type="javascript"></script>
+		<script src="js/imgerror.js" type="javascript"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		
-		<link rel="stylesheet" href="spinner.css">
-		<link rel="stylesheet" type="text/css" href="preloader/preloader.css">
-		<script src="preloader/preloader.js"></script>
+		<link rel="stylesheet" href="css/spinner.css">
+		<link rel="stylesheet" type="text/css" href="css/preloader.css">
+		<script src="js/preloader.js"></script>
 		
 		<!--Favicon-->
 		<link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
