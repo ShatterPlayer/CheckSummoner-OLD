@@ -15,10 +15,11 @@
 		</script>
 		
 		<!--  Clear Cache -->
-		<meta http-equiv="Expires" content="0" />
-		<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
-		<meta http-equiv="Cache-Control" content="post-check=0, pre-check=0" />
-		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="cache-control" content="max-age=0" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+		<meta http-equiv="pragma" content="no-cache" />
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
 		
@@ -28,19 +29,19 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="google-site-verification" content="6FgJsje9_OIRxLLq-1ml2ouyzm5lsUut3Nj7U9qqJps" />
-		<link rel="stylesheet" href="main.css">
-		<link rel="stylesheet" href="spinner.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/spinner.css">
 		<link href="https://fonts.googleapis.com/css?family=Lato:400,900&amp;subset=latin-ext" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src='https://www.google.com/recaptcha/api.js'></script>
-		<script src='loader.js'></script>
+		<script src='js/loader.js'></script>
 		
 		<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
-		<script src="cookies.js"></script>
+		<script src="js/cookies.js"></script>
 		
-		<link rel="stylesheet" type="text/css" href="preloader/preloader.css">
-		<script src="preloader/preloader.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/preloader.css">
+		<script src="js/preloader.js"></script>
 		
 		<!--Favicon-->
 		<link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
