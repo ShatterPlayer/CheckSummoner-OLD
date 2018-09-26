@@ -169,7 +169,7 @@
 				<div class="footer">
 					<span class="blue">Check</span>
 					<span class="red">Summoner</span> &copy; - Statystyki graczy League of Legends
-					<br> Kontakt: shatterplayer@gmail.com
+					<br> Kontakt: kontakt@checksummoner.ga
 				</div>
 			</footer>
 			

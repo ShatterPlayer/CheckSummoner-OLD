@@ -1,0 +1,272 @@
+body
+{
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    background-color: #151519;
+    cursor: default;
+    text-align: center;
+}
+  
+  h2 
+  {
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-top: 170px;
+    font-size: 40px;
+  }
+  
+  p 
+  {
+    font-size: 25px;
+  }
+  
+  .paraminput h2 
+  {
+    margin-bottom: 60px;
+  }
+  
+  input, select 
+  {
+    font-weight: 900;
+    border-radius: 10px;
+    outline: none;
+    height: 50px;
+  }
+  
+  input 
+  {
+    &[type=text] {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 304px;
+      font-size: 20px;
+      border: 2px solid #4e56a7;
+      text-align: center;
+      background-color: #d7dcff;
+      color: #4e56a7;
+      margin: 5px 0;
+      &:focus {
+        background-color: #c6cbff;
+        border: 2px solid #3d4596;
+      }
+    }
+    &[type=submit] 
+    {
+      margin-top: 10px;
+      width: 190px;
+      background-color: #d6fcd9;
+      border: 2px solid #0c8e17;
+      color: #0c8e17;
+      font-size: 12px;
+      float: left;
+      &:focus {
+        background-color: #c5ebc8;
+        border: 2px solid #0b7d06;
+      }
+    }
+  }
+  
+  select 
+  {
+    margin-top: 10px;
+    width: 106px;
+    color: #3d4596;
+    font-size: 18px;
+    padding: 10px;
+    background-color: #d7dcff;
+    border: 2px solid #4e56a7;
+    margin-right: 5px;
+    margin-bottom: 17px;
+    float: left;
+    &:focus {
+      background-color: #c6cbff;
+      border: 2px solid #3d4596;
+    }
+  }
+  
+  header 
+  {
+    background-color: #151519;
+  }
+  
+  .logo 
+  {
+    text-align: center;
+    font-weight: 900;
+    font-size: 60px;
+    letter-spacing: 2px;
+    padding-top: 5px;
+  }
+  
+  .maintext 
+  {
+    height: 500px;
+    text-align: center;
+    padding: 20px 0;
+    color: white;
+    font-size: 18px;
+    background-image: url("../img/bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+  
+  .blue 
+  {
+    color: #1A2275;
+  }
+  
+  .red 
+  {
+    color: #BD0003;
+  }
+  
+  .paraminput 
+  {
+    height: 750px;
+    background-color: #151519;
+    padding: 20px 0;
+    color: white;
+    img {
+      width: 140px;
+    }
+  }
+  
+  .img1 
+  {
+    position: absolute;
+    top: 955px;
+    left: 10%;
+  }
+  
+  .img2 
+  {
+    position: absolute;
+    top: 955px;
+    right: 10%;
+  }
+  
+  .inputscontainer 
+  {
+    width: 304px;
+    max-height: 215px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+  }
+  
+  .error 
+  {
+    color: #BD0003;
+    margin: 0;
+  }
+  
+  .errorcontainer 
+  {
+    margin-top: 20px;
+    height: 50px;
+    width: 100%;
+  }
+  
+  #serverinfo 
+  {
+    width: 250px;
+    border: 2px solid #1A2275;
+    background-color: #d7dcff;
+    border-radius: 10px;
+    color: #1A2275;
+    padding: 10px;
+    font-size: 13px;
+    position: relative;
+    z-index: 5;
+    right: 315px;
+    bottom: 305px;
+    opacity: 0;
+    -webkit-transition: opacity .2s ease-in-out;
+    -o-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+  }
+  
+  .qmark 
+  {
+    width: 22px !important;
+    position: relative;
+    margin: 0;
+    border-radius: 50%;
+    right: 170px;
+    bottom: 204px;
+    border: 2px solid #1A2275;
+  }
+  
+  .paraminput .loader 
+  {
+    margin-top: 270px;
+    h3 {
+      margin-top: 50px;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+  }
+  
+  .footer 
+  {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 15px;
+    color: #fff;
+    line-height: 23px;
+    background-color: #09090c;
+  }
+  
+  /* Mobile Devices */
+  
+  @media only screen and (max-width: 680px) 
+  {
+    .qmark, .logo img:first-child 
+    {
+      display: none;
+    }
+    h2 
+    {
+      font-size: 30px !important;
+    }
+    p 
+    {
+      font-size: 20px;
+    }
+    #serverinfo 
+    {
+      position: static;
+      opacity: 1;
+      width: 280px;
+    }
+    .footer
+    {
+      font-size: 12px;
+    }
+  }
+  
+  @media only screen and (max-width: 900px) 
+  {
+    .img1, .img2 
+    {
+      display: none;
+    }
+  }
+  
+  /*  Computers, Laptops, etc */
+  
+  @media only screen and (min-width: 681px)
+    {
+    .logo img:last-child {
+      display: none;
+    }
+  }
+  
+  input 
+  {
+    &:-moz-placeholder, &::-webkit-input-placeholder {
+      color: #4e56a7;
+    }
+  }
