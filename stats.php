@@ -85,8 +85,8 @@
 	//Request for other player informations
 	try
 	{
-		//$league = apiRequest('https://'.$region.".api.riotgames.com"."/lol/league/v3/positions/by-summoner/{$player->id}");
-		//if(!isset($league)) throw new Exception();
+		$league = apiRequest('https://'.$region.".api.riotgames.com"."/lol/league/v3/positions/by-summoner/{$player->id}");
+		if(!isset($league)) throw new Exception();
 
 		$mastery = apiRequest('https://'.$region.".api.riotgames.com"."/lol/champion-mastery/v3/champion-masteries/by-summoner/{$player->id}");
 		if(!isset($mastery)) throw new Exception();
@@ -103,6 +103,34 @@
 		header('Location: index.php#error'); exit();
 	}
 
+	$soloqueue = '<img src="img/provisional.png" alt="?" width="100">
+	<figcaption><span class="blue">UNRANKED</span></figcaption>';
+	$flexsr = $soloqueue;
+	$flextt = $soloqueue;
+	foreach ($league as $l)
+	{
+		switch($l->queueType)
+		{
+			case 'RANKED_SOLO_5x5':
+				$soloqueue = '
+				<img src="img/'.strtolower($l->tier).'.png" alt="?">
+				<figcaption><span class="blue">'.$l->tier.' '.$l->rank.'</span></figcaption>
+				'; break;
+
+			case 'RANKED_FLEX_SR':
+				$flexsr = '
+				<img src="img/'.strtolower($l->tier).'.png" alt="?">
+				<figcaption><span class="blue">'.$l->tier.' '.$l->rank.'</span></figcaption>
+				'; break;
+
+			case 'RANKED_FLEX_TT':
+				$flextt = '
+				<img src="img/'.strtolower($l->tier).'.png" alt="?">
+				<figcaption><span class="blue">'.$l->tier.' '.$l->rank.'</span></figcaption>
+				'; break;
+		}
+	}
+
 	//Simple function - variable not exist -> ?
 	function exist($v)
 	{
@@ -110,7 +138,7 @@
 		else return '?';
 	}
 	
-	//Very advanced function which make days ago from timestamp in miliseconds
+	//Advanced function which make days ago from timestamp in miliseconds
 	function tstamp_to_days_ago($timestamp)
 	{
 		$date1 = date('Y-m-d H:i:s', (int) round($timestamp/1000, 0));
@@ -234,20 +262,21 @@
 					<div style="clear: both;"></div>
 					<div class="playerlvl"><span class="red">LVL </span><span class="blue"><?=exist($player->summonerLevel)?></span></div>
 
-					<!--<div class="league">
+					<div class="league">
 						<figure>
-							<img src="img/bronze.png" alt="?" width="100">
+						<figcaption><span class="red">FLEX 5x5</span></figcaption>
+						<?= $flexsr ?>
 						</figure>
 						<figure>
-							<img src="img/bronze.png" alt="?" width="100">
-							<figcaption><span class="red">Solo Queue</span></figcaption>
-							<figcaption><span class="blue">Bronz 5</span></figcaption>
+						<figcaption><span class="red">SOLO QUEUE</span></figcaption>
+						<?= $soloqueue ?>
 						</figure>
 						<figure>
-							<img src="img/bronze.png" alt="?" width="100">
+						<figcaption><span class="red">FLEX 3x3</span></figcaption>
+						<?= $flextt ?>
 						</figure>
 						<div style="clear: both;"></div>
-					</div> -->
+					</div> 
 				</div>
 
 				<div class="mastery">
@@ -313,7 +342,6 @@
 								';
 							}
 						}
-						print_r($league);
 					?>
 					
 				</div>
@@ -324,7 +352,7 @@
 		<footer>
 			<div class="footer">
 				<span class="blue">Check</span><span class="red">Summoner</span> &copy; - Statystyki graczy League of Legends<br>
-				Kontakt: shatterplayer@gmail.com
+				Kontakt: kontakt@checksummoner.ga
 			</div>
 		</footer>
 		

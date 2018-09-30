@@ -128,8 +128,10 @@ img
 
 .league figure
 {
-	margin: 0 50px;
+	margin: 0 42.5px;
+	width: 115px;
 	float: left;
+	text-align: center;
 }
 
 .league figure figcaption
@@ -289,6 +291,27 @@ img
 	{
 		font-size: 15px;
 		top: 55px;
+	}
+
+	.league
+	{
+		width: 300px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.league figure
+	{
+		width: auto;
+		margin: 0 10px;
+		font-size: 12px;
+		width: 80px;
+	}
+
+	.league img
+	{
+		width: 50px;
+		height: 50px;
 	}
 	
 	.mastery
